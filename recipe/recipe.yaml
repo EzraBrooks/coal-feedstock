@@ -34,7 +34,9 @@ outputs:
         - cmake
         - ninja
         # XML generation seem to be broken in some doxygen version
-        - doxygen <1.9.8|>=1.11,<1.13
+        # doxygen isn't available on linux-riscv64
+        - if: not riscv64
+          then: doxygen <1.9.8|>=1.11,<1.13
       host:
         - eigen
         - eigen-abi-devel
